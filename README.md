@@ -2,6 +2,8 @@
 
 ## Background 👋 
 
+hello dev
+
 Sam's Tarven is a small local liquor business based in kingsway, benoni in Gauteng, South Africa.
 
 At the start of this project the business didn't have a price scanner for keeping track of item prices and
