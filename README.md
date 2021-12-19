@@ -19,9 +19,14 @@ Languages and Frameworks used:
     , mySQL
 
 ## Description:
-    - The app uses node and Express to connect to a mySQL database stored on my local mention and sends the retrived data to port 5000 of the local router IP address where client side can fetch it from.
-    - Clients can request a list products by searching for them in the search box and the server side retrives the results and then it's displayed in an HTML table
-    - It also provides feactures for calculating the total of varies products clients may wish to add when searching
+    - The app uses node and Express to connect to a mySQL database 
+     stored on my local mention and sends the retrived data to port 5000 of the
+     local router IP address where client side can fetch it from.
+    - Clients can request a list products by searching for them in the 
+     search box and the server side retrives the results and
+     then it's displayed in an HTML table
+    - It also provides feactures for calculating the total of varies products
+     clients may wish to add when searching
 
 ## Current Issues:
     - Database is currently stored on a local machine, looking for ways to move it to a remote server so it can be accessed from anywhere
