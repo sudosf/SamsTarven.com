@@ -1,8 +1,8 @@
+## Dev Branch: for testing and adding new Features
+
 # Sam'sTarven.com
 
 ## Background 👋 
-
-hello dev
 
 Sam's Tarven is a small local liquor business based in kingsway, benoni in Gauteng, South Africa.
 
