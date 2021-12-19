@@ -11,14 +11,14 @@ of prices by documenting them on paper also faced the challange of being outdate
 
 This web based application aims to solve this particular problem using the resources modern tech has to offer, granted it's rather a small project but it will the beginning of something even greater.
 
-## Feactures, Functionality and Description
+# Feactures, Functionality and Description
 
 Languages and Frameworks used:
     - HTML, CSS
-    - JavaScript (incl Node.js and Express.js)
-    - mySQL
+    , JavaScript (incl Node.js and Express.js)
+    , mySQL
 
-Description:
+## Description:
     - The app uses node and Express to connect to a mySQL database stored on my local mention and sends the retrived data to port 5000 of the local router IP address where client side can fetch it from.
     - Clients can request a list products by searching for them in the search box and the server side retrives the results and then it's displayed in an HTML table
     - It also provides feactures for calculating the total of varies products clients may wish to add when searching
