@@ -23,7 +23,7 @@ Description:
     - Clients can request a list products by searching for them in the search box and the server side retrives the results and then it's displayed in an HTML table
     - It also provides feactures for calculating the total of varies products clients may wish to add when searching
 
-Current Issues:
+## Current Issues:
     - Database is currently stored on a local machine, looking for ways to move it to a remote server so it can be accessed from anywhere
     - Website is currently running offline (local host), looking for ways to host it online
     - CSS has multiple files, one for each page. looking for ways to produce more clean CSS and its HTML identifiers
