@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="stylesheets/calculator.css">
+    <title>Sam's Tarven</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container flex">
+
+            <div class="logo">
+                <img src="images/favicon.png" alt="logo.jpg">
+                <h1>Sam's <span>Tarven</span></h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="active" href="calculator.html">Calculator</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+    
+    <main>
+        <div>
+            <section class="search">
+
+                <h2>Price-Check (<span>ZAR</span>)</h2>
+                <div class="search-wrapper">
+    
+                    <form onSubmit="return false;" name=search_form>
+                        <input class="search-box" name=search_box onchange='searchForItem(), btn_setVisibility()', oninput='btn_setVisibility()' type=text size=50  placeholder="Search For Item Prices" autocomplete="off" autofocus>  
+                    
+                        <button class="close-icon" name="close_btn" type="reset"></button>
+                        <input class="search-btn" name="search_btn" onclick='searchForItem()' type="button" value="Go">
+                    </form>
+
+                </div>
+            </section>
+        </div>
+
+        <div class="cart-container"> 
+        
+            <section class="table-container">
+                <div class="clear">
+                    <input class="clear-data" id="clear_data" onclick="clearData()" type="button" value="Clear All">
+                </div>
+
+                <table id="cart_search_table">
+                    <colgroup>
+                        <col span="1" style="width: 25%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 15%;">
+                        <col span="1" style="width: 25%;">
+                        <col span="1" style="width: 20%;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th id="name_col">Name</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th >Price</th>
+                            <th id="add_col">Add To Cart</th>
+                        </tr>
+                    </thead>
+
+                    <tbody><tr><td></td></tr></tbody>
+                </table>
+
+                <h3 id="items_result">No item(s)</h3>
+            </section>
+
+            <section class="cart-table-container">
+                
+                    <div class="clear">
+                        <input class="clear-data" type="button" onclick="clearCart()" value="Clear Cart">
+                    </div>
+
+                    <table id="cart_table" class="cart-table">
+                        <colgroup>
+                            <col span="1" style="width: 35%;">
+                            <col span="1" style="width: 15%;">
+                            <col span="1" style="width: 15%;">
+                            <col span="1" style="width: 0%;">
+                            <col span="1" style="width: 0%;">
+                            <col span="1" style="width: 0%;">
+                            <col span="1" style="width: 20%;">
+                            <col span="1" style="width: 20%;">
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th>Cart Items: <span id="num_items">0</span></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Qty</th>
+                                <th></th>
+                                <th id="cart_price_col">Price</th>
+                                <th class="remove-item-field"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody><tr></tr></tbody>
+                    </table>
+
+                    <div class="calculate-container">
+
+                        <div class="calculate">
+                            <h3>Cash: <span class='amount' >R</span></h3>
+                            <input id="cash_input_box" type="text" onchange="calculateChange()" placeholder="Enter Amount(ZAR)...">
+                            <h3>Total: <span class='amount' id="total">R</span></h3>
+                        </div>
+
+                        <div class="calculate-btn">
+                            <input type="button" onclick="calculateChange()" value="Calculate">
+                            <h3>Change: <span class='amount' id='change' >R</span></h3>
+                        </div>
+                        
+                    </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div>
+                <h1 class="logo">Sam's <span>Tarven</span></h1>
+                <p>Copyright &copy; 2021. South Africa</p>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="social">
+                <a href="#"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="javascripts/calculator.js"></script>
+</body>
+
+</html>
