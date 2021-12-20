@@ -20,11 +20,13 @@ app.use(function (req, res, next) {
 
 app.get('/getAll', (request, response) => {
 
-    const db = dbService.getDatabaseInstance();
-    const result = db.getAllData();
+    // Process products.json data here
 
-    result.then(data => response.json({data : data}))
-        .catch(err => console.log("Error: " + err));
+   // const db = dbService.getDatabaseInstance();
+   // const result = db.getAllData();
+
+   // result.then(data => response.json({data : data}))
+    //    .catch(err => console.log("Error: " + err));
 
 }) // get all data from database
 

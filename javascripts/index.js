@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
    
+    // fetch products.json data here
+
     /* fetch call disabled as no database exists
     * // fetch data from router IP address, port:5000
     * fetch('http://192.168.0.144:5000/getAll')
