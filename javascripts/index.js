@@ -1,12 +1,19 @@
 
+
 document.addEventListener('DOMContentLoaded', () => {
    
-    // fetch data from router IP address, port:5000
-    fetch('http://192.168.0.144:5000/getAll')
-    .then(response => response.json());
+    /* fetch call disabled as no database exists
+    * // fetch data from router IP address, port:5000
+    * fetch('http://192.168.0.144:5000/getAll')
+    * .then(response => response.json());
+    */
 
     close_btn.style.visibility = 'hidden';
-});
+});   
+
+// TODO
+// display products.json on HTMLtable
+// searching products.json 
 
 const close_btn = search_form.close_btn;
 var clear_data = document.getElementById("clear_data");
@@ -27,10 +34,12 @@ function clearData() {
 function searchForItem() {
     let search_key = search_box.value;
 
-    // fetch data(json) from router IP address, port:5000
-    fetch('http://192.168.0.144:5000/search/' + search_key)
-    .then(response => response.json())
-    .then(data => loadHTMLTable(data['data']));
+    /* fetch call disabled as no database exists
+    * // fetch data(json) from router IP address, port:5000
+    * fetch('http://192.168.0.144:5000/search/' + search_key)
+    * .then(response => response.json())
+    * .then(data => loadHTMLTable(data['data']));
+    */
 }
 
 function loadHTMLTable(data) {

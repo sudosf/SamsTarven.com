@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const dbService = require('./database');
 dotenv.config();
 
+const fs = require('fs');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
@@ -24,7 +25,19 @@ app.get('/getAll', (request, response) => {
 
     result.then(data => response.json({data : data}))
         .catch(err => console.log("Error: " + err));
+
 }) // get all data from database
+
+/*
+function writeToFile(data) {
+    
+    fs.writeFile("./products.json",  JSON.stringify(data), (err) => {
+        // Error checking
+        if (err) throw err;
+        console.log("New data added");
+    });
+} */
+
 
 app.get('/search/:search_key', (request, response) => {
 
