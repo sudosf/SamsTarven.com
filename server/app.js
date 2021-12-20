@@ -43,14 +43,14 @@ function writeToFile(data) {
 
 app.get('/search/:search_key', (request, response) => {
 
-    const { search_key } = request.params;
+  //  const { search_key } = request.params;
 
-    const db = dbService.getDatabaseInstance();
-    const result = db.searchByName(search_key);
+   // const db = dbService.getDatabaseInstance();
+   // const result = db.searchByName(search_key);
     
-    result
-    .then(data => response.json({data : data}))
-    .catch(err => console.log("Error: " + err));
+  //  result
+   // .then(data => response.json({data : data}))
+   // .catch(err => console.log("Error: " + err));
 }) // get search results, pass as json
 
 app.listen(process.env.PORT, () => console.log("Server Started!"));
