@@ -3,6 +3,9 @@
 document.addEventListener('DOMContentLoaded', () => {
    
     // fetch products.json data here
+    fetch('http://localhost:5000/getAll')
+    .then(response => response.json())
+    .then(data => loadHTMLTable(data['data']));
 
     /* fetch call disabled as no database exists
     * // fetch data from router IP address, port:5000
