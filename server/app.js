@@ -58,4 +58,4 @@ app.get('/search/:search_key', (request, response) => {
 }) // get search results, pass as json
 
 const PORT = process.env.PORT || 3000; // using port 3000 if no PORT env var has been specified
-app.listen(PORT , () => console.log(`Listening on localhost:[${PORT}]`));
+app.listen(PORT , () => console.log(`Server started!, Listening on localhost: [${PORT}]`));
