@@ -1,3 +1,4 @@
+const close_btn = search_form.close_btn;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // display products.json on HTMLtable
 // searching products.json 
 
-const close_btn = search_form.close_btn;
 var clear_data = document.getElementById("clear_data");
 var search_box = search_form.search_box;
 var items_result =  document.getElementById("items_result");
@@ -39,11 +39,16 @@ function clearData() {
 function searchForItem() {
     let search_key = search_box.value;
 
+    if (!search_key) {
+        return; // if the search term is an empty string don't bother making a request 
+    }
+
+    fetch('http://localhost:5000/search/' + search_key)
+    .then(response => response.json())
+    .then(data => loadHTMLTable(data['data']));
+
     /* fetch call disabled as no database exists
     * // fetch data(json) from router IP address, port:5000
-    * fetch('http://192.168.0.144:5000/search/' + search_key)
-    * .then(response => response.json())
-    * .then(data => loadHTMLTable(data['data']));
     */
 }
 
@@ -67,3 +72,11 @@ function loadHTMLTable(data) {
 
     search_box.value = "";
 } // load HTML search table with results
+
+let timer = null;
+
+const delaySearch = () => {
+    
+    clearTimeout(timer);
+    timer = setTimeout(searchForItem, 1000);
+}

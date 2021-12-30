@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Sam's Tarven</title>
 </head>
 
@@ -37,15 +37,15 @@
     
     <main>
         <section class="search">
-
+ 
             <h2>Price-Check (<span>ZAR</span>)</h2>
             <div class="search-wrapper">
 
                 <form onSubmit="return false;" name=search_form>
-                    <input class="search-box" name=search_box onchange='searchForItem(), btn_setVisibility()', oninput='btn_setVisibility()' type=text size=50  placeholder="Search For Item Prices" autofocus>  
+                    <input class="search-box" name=search_box oninput='btn_setVisibility(), delaySearch()' type=text size=50  placeholder="Search For Item Prices" autofocus>  
                    
                     <button class="close-icon" name="close_btn" type="reset"></button>
-                    <input class="search-btn" name="search_btn" onclick='searchForItem()' type="button" value="Go">
+                    <input class="search-btn" name="search_btn" type="button" value="Go">
                 </form>
 
             </div>
@@ -108,7 +108,7 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="javascripts/index.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>
