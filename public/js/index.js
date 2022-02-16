@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     // fetch products.json data here
     fetch('http://localhost:5000/getAll')
-    .then(response => response.json())
-    .then(data => loadHTMLTable(data['data']));
+    .then(response => response.json());
 
     /* fetch call disabled as no database exists
     * // fetch data from router IP address, port:5000
@@ -15,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     close_btn.style.visibility = 'hidden';
+    search_box.value = "";
 });   
 
 // TODO
@@ -70,7 +70,7 @@ function loadHTMLTable(data) {
     items_result =  document.getElementById("items_result");
     items_result.innerHTML = data.length + " Item(s) found";
 
-    search_box.value = "";
+    // search_box.value = "";
 } // load HTML search table with results
 
 let timer = null;

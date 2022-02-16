@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
    
     // fetch data(json) from router IP address, port:5000
-    fetch('http://192.168.0.144:5000/getAll')
+    fetch('http://localhost:5000/getAll')
     .then(response => response.json());
 
     close_btn.style.visibility = 'hidden';
     cash.value = "";
+    search_box.value = "";
 });
 
 const close_btn = search_form.close_btn;
@@ -26,14 +27,25 @@ var total_price = 0;
 var table = document.getElementById('cart_search_table').getElementsByTagName('tbody')[0];
 var cart_table = document.getElementById('cart_table').getElementsByTagName('tbody')[0];
 
+function btn_setVisibility() {
+    if (!search_box.value) close_btn.style.visibility = 'hidden';
+    else close_btn.style.visibility = 'visible';
+} // controls search box close button visibility
 
 function searchForItem() {
     let search_key = search_box.value;
 
-    // fetch data(json) from router IP address, port:5000
-    fetch('http://192.168.0.144:5000/search/' + search_key)
+    if (!search_key) {
+        return; // if the search term is an empty string don't bother making a request 
+    }
+
+    fetch('http://localhost:5000/search/' + search_key)
     .then(response => response.json())
     .then(data => loadHTMLTable(data['data']));
+
+    /* fetch call disabled as no database exists
+    * // fetch data(json) from router IP address, port:5000
+    */
 }
 
 function clearData() {
@@ -128,7 +140,7 @@ function loadHTMLTable(data) {
     items_result =  document.getElementById("items_result");
     items_result.innerHTML = data.length + " Item(s) found";
 
-    search_box.value = ""; 
+    // search_box.value = ""; 
 
     getHTMLTableData();
 } // load HTML search table with results
@@ -214,7 +226,10 @@ function removeCartItem(btn) {
     row.parentNode.removeChild(row);
 } 
 
-function btn_setVisibility() {
-    if (!search_box.value) close_btn.style.visibility = 'hidden';
-    else close_btn.style.visibility = 'visible';
-} // controls search box close button visibility
+let timer = null;
+
+const delaySearch = () => {
+    
+    clearTimeout(timer);
+    timer = setTimeout(searchForItem, 1000);
+}

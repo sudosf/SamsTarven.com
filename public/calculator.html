@@ -43,7 +43,7 @@
                 <div class="search-wrapper">
     
                     <form onSubmit="return false;" name=search_form>
-                        <input class="search-box" name=search_box onchange='searchForItem(), btn_setVisibility()', oninput='btn_setVisibility()' type=text size=50  placeholder="Search For Item Prices" autocomplete="off" autofocus>  
+                        <input class="search-box" name=search_box oninput='btn_setVisibility(), delaySearch()' type=text size=50  placeholder="Search For Item Prices" autofocus>    
                     
                         <button class="close-icon" name="close_btn" type="reset"></button>
                         <input class="search-btn" name="search_btn" onclick='searchForItem()' type="button" value="Go">
@@ -165,7 +165,7 @@
     </footer>
 
 
-    <script src="javascripts/calculator.js"></script>
+    <script src="js/calculator.js"></script>
 </body>
 
 </html>
