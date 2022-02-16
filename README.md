@@ -77,11 +77,5 @@ This web based application aims to solve this particular problem using the resou
 
 # 🌱 Future considerations
 
-- A Transformation!
-    
-- Transforming the entire website to offer online services to customers 
-  such as buying products online, booking and delivery,
-  products special etc.
-- Turning it into an e-commerce website and 
-  still provide services to administrators for tracking their products and 
-  services that can help improve business decisions.
+- Developing an e-Commerce website using this site as a foundation and provide services to administrators for tracking their products and 
+  services that can help improve business decision-making.
