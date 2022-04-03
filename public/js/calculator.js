@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-   
-    // fetch data(json) from router IP address, port:5000
+    // fetch products.json data 
     fetch('http://localhost:5000/getAll')
     .then(response => response.json());
 
@@ -33,19 +32,19 @@ function btn_setVisibility() {
 } // controls search box close button visibility
 
 function searchForItem() {
-    let search_key = search_box.value;
 
-    if (!search_key) {
-        return; // if the search term is an empty string don't bother making a request 
-    }
+    let search_key = search_box.value;
+    // if the search key is empty don't make a request 
+    if (!search_key) return; 
 
     fetch('http://localhost:5000/search/' + search_key)
     .then(response => response.json())
     .then(data => loadHTMLTable(data['data']));
+}
 
-    /* fetch call disabled as no database exists
-    * // fetch data(json) from router IP address, port:5000
-    */
+function delaySearch(timer = null) {
+    clearTimeout(timer);
+    timer = setTimeout(searchForItem, 1000);
 }
 
 function clearData() {
@@ -73,16 +72,16 @@ function calculateChange() {
 function increaseItemPrice(btn) {
     
     let row = btn.parentNode.parentNode;
-
     let qty = Number(row.cells[5].innerHTML); // cell 5 in HTML table
     let item_price = row.cells[7].innerHTML;
+
+    // remove letters/symbols to get price
     item_price = Number( item_price.replace(/[^\d.-]/g, '') );
 
     // check if only one item is added
     if (qty == 1) {
         row.cells[7].innerHTML = "R " + (item_price + item_price).toFixed(2); 
         total_price += item_price;
-
     }else { 
         // more than one item already exits
         // increment item price with its unit value
@@ -92,16 +91,16 @@ function increaseItemPrice(btn) {
 
     total.innerHTML ="R " + total_price.toFixed(2);
     calculateChange();
-
     row.cells[5].innerHTML = ++qty;
 }
 
 function decreaseItemPrice(btn) {
     
     let row = btn.parentNode.parentNode;
-
     let qty = Number(row.cells[5].innerHTML); // cell 5 in HTML table
     let item_price = row.cells[7].innerHTML;
+
+    // remove letters/symbols to get price
     item_price = Number( item_price.replace(/[^\d.-]/g, '') );
 
     // check if only one item is left
@@ -115,7 +114,6 @@ function decreaseItemPrice(btn) {
 
     total.innerHTML ="R " + total_price.toFixed(2);
     calculateChange();
-
     row.cells[5].innerHTML = --qty;
 }
 
@@ -123,10 +121,8 @@ function loadHTMLTable(data) {
     table.innerHTML = "";
 
     for (let obj of data) {
-
         let newRow = table.insertRow(table.rows.length);
-
-        // hide product id from displaying in the table
+        // hide product id in table
         newRow.innerHTML += `<tr> 
                     <td hidden>${obj.prod_ID}</td> 
                     <td>${obj.prod_name}</td>
@@ -139,19 +135,13 @@ function loadHTMLTable(data) {
     
     items_result =  document.getElementById("items_result");
     items_result.innerHTML = data.length + " Item(s) found";
-
-    // search_box.value = ""; 
-
     getHTMLTableData();
 } // load HTML search table with results
 
 function getHTMLTableData() {
     let rowData;
-
     for (let i = 0; i < table.rows.length; i++) {
-       
         table.rows[i].onclick = function() {
-
             rowData = [ this.cells[0].innerHTML,
                 this.cells[1].innerHTML,
                 this.cells[2].innerHTML,
@@ -160,7 +150,6 @@ function getHTMLTableData() {
             ];
 
             let prod_id = this.cells[0].innerHTML;
-
             if ( !itemExists(prod_id) ) {
                 let item_price = this.cells[4].innerHTML;
                 item_price = Number( item_price.replace(/[^\d.-]/g, '') );
@@ -168,7 +157,6 @@ function getHTMLTableData() {
                 total_price += item_price;
                 total.innerHTML ="R " + total_price.toFixed(2);
                 calculateChange();
-
                 addCartItem(rowData);
             }   
         }
@@ -180,11 +168,10 @@ function itemExists(prod_id) {
     if ( cart_table.rows.length > 1 ) {
         for (let i = 1; i < cart_table.rows.length; i++) {
             let row_prod_id = cart_table.rows[i].cells[0].innerHTML;
-
-            if (row_prod_id === prod_id) return true;
+            if (row_prod_id === prod_id) 
+                return true;
         }
     }
-
     return false;
 }
 
@@ -200,7 +187,6 @@ function addCartItem(rowData) {
             newRow.innerHTML += "<td id='qty'>1</td>";
             newRow.innerHTML += "<td><input id='plus' onclick='increaseItemPrice(this)' type='button' value='+'></td>";   
         }
-
         newRow.innerHTML += `<td>${rowData[i]}</td>`;   
     }
 
@@ -215,6 +201,7 @@ function removeCartItem(btn) {
     let row = btn.parentNode.parentNode;
 
     let item_price = row.cells[7].innerHTML;
+    // remove letters/symbols to get price
     item_price = Number( item_price.replace(/[^\d.-]/g, '') );
 
     total_price -= item_price;
@@ -222,14 +209,5 @@ function removeCartItem(btn) {
     calculateChange();
 
     num_items.innerHTML = --itemsAdded;
-
     row.parentNode.removeChild(row);
 } 
-
-let timer = null;
-
-const delaySearch = () => {
-    
-    clearTimeout(timer);
-    timer = setTimeout(searchForItem, 1000);
-}
