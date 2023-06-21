@@ -45,12 +45,7 @@ This web based application aims to solve this particular problem using the resou
   clients may wish to add when searching
 
 ## Current Issues:
-- Database is currently stored on a local machine, 
-  looking for ways to move it to a remote server
-  so it can be accessed from anywhere.
-
-- Website is currently running offline (local host),
-  looking for ways to host it online.
+- Database is currently stored on a localy
 
 - CSS has multiple files, one for each page. 
   looking for ways to produce more clean CSS and its HTML identifiers.
