@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // fetch products.json data 
-    fetch('http://localhost:5000/getAll')
+    fetch('http://localhost:3000/getAll')
     .then(response => response.json());
 
     close_btn.style.visibility = 'hidden';
@@ -29,7 +29,7 @@ function searchForItem() {
     // if the search key is empty don't make a request 
     if (!search_key) return; 
 
-    fetch('http://localhost:5000/search/' + search_key)
+    fetch('http://localhost:3000/search/' + search_key)
     .then(response => response.json())
     .then(data => loadHTMLTable(data['data']));
 }
